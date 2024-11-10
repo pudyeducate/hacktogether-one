@@ -23,7 +23,7 @@ const Login = () => {
   const redirect = (model: string) => {
     const firstVar = generateRandomString(6)
     const secVar = generateRandomString(6)
-    const url = `/viewmodel?model=${model}&rtName=${firstVar}#rtPwd=${secVar}`
+    const url = `/viewmodel?model=${model}&rtName=T6cU5V#rtPwd=hszWXh`
 
     window.location.href = url
   }
