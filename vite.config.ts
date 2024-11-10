@@ -18,4 +18,12 @@ const ClientSideRouting = {
 export default defineConfig({
   plugins: [ViteYaml(), react(), tsconfigPaths(), vercel(), ClientSideRouting],
   assetsInclude: ['**/*.glb'],
+  build: {
+    rollupOptions: {
+      input: {
+        main: '/index.html',
+        viewmodel: '/viewmodel/index.html',
+      },
+    },
+  },
 })

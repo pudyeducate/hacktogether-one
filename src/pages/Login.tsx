@@ -23,7 +23,7 @@ const Login = () => {
   const redirect = (model: string) => {
     const firstVar = generateRandomString(6)
     const secVar = generateRandomString(6)
-    const url = `${import.meta.env['VITE_BASE_URL']}viewmodel?model=${model}&rtName=${firstVar}#rtPwd=${secVar}`
+    const url = `/viewmodel?model=${model}&rtName=${firstVar}#rtPwd=${secVar}`
 
     window.location.href = url
   }
