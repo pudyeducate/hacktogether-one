@@ -4,9 +4,6 @@ import ViteYaml from '@modyfi/vite-plugin-yaml'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
-  plugins: [
-    ViteYaml(),
-    react(),
-    tsconfigPaths(),
-  ]
+  plugins: [ViteYaml(), react(), tsconfigPaths()],
+  assetsInclude: ['**/*.glb'],
 })
