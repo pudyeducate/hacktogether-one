@@ -3,7 +3,9 @@ import { useEffect, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stats, useGLTF } from '@react-three/drei'
 import { kembaraLoka } from '@assets'
-import Swal from 'sweetalert2' // Import SweetAlert2
+import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
+import { FaArrowRight, FaHireAHelper, FaQuestion } from 'react-icons/fa'
 
 export default function ViewModel(props) {
   const { nodes, materials } = useGLTF(kembaraLoka)
@@ -11,7 +13,6 @@ export default function ViewModel(props) {
   const group = useRef()
   const [scale, setScale] = useState([1, 1, 1])
 
-  // Trigger SweetAlert with URL when the component is mounted
   useEffect(() => {
     const currentUrl = window.location.href
 
@@ -20,27 +21,8 @@ export default function ViewModel(props) {
       text: currentUrl,
       icon: 'info',
       showCancelButton: true,
-      confirmButtonText: 'Copy to clipboard',
+      showConfirmButton: false,
       cancelButtonText: 'Close',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Try to copy the URL to the clipboard
-        console.log(navigator)
-        if (navigator.clipboard) {
-          navigator.clipboard
-            .writeText(currentUrl)
-            .then(() => {
-              Swal.fire('Copied!', 'The URL has been copied to your clipboard.', 'success')
-            })
-            .catch((err) => {
-              // In case clipboard access fails (e.g., if the browser is restrictive)
-              Swal.fire('Error!', 'Failed to copy the URL.', 'error')
-              console.error('Clipboard copy failed: ', err)
-            })
-        } else {
-          Swal.fire('Error!', 'Clipboard API not supported in your browser.', 'error')
-        }
-      }
     })
   }, [])
 
@@ -55,9 +37,29 @@ export default function ViewModel(props) {
   }
 
   return (
-    <div>
-      <Canvas className='!h-[100vh] !w-screen bg-white' camera={{ position: [100, 1, 2] }} shadows>
-        <directionalLight position={[3.3, 1.0, 4.4]} castShadow intensity={Math.PI * 2} />
+    <div className='h-screen w-screen bg-[#101010] flex flex-col justify-center gap-5 px-36'>
+      <div className='w-full flex justify-between'>
+        <h1 className='text-3xl font-thin text-white'>DimenSync</h1>
+        <div className='flex gap-5 items-center'>
+          <ConnectedUsers />
+          <FaQuestion
+            className='text-white border hover:cursor-pointer'
+            onClick={() => {
+              Swal.fire({
+                title: 'Current URL',
+                text: window.location.href,
+                icon: 'info',
+                showCancelButton: true,
+                showConfirmButton: false,
+                cancelButtonText: 'Close',
+              })
+            }}
+          />
+        </div>
+      </div>
+      <Canvas className='!h-[80vh] !w-full bg-white rounded-2xl' camera={{ position: [100, 1, 2] }} shadows>
+        {/* <directionalLight position={[3.3, 1.0, 4.4]} castShadow intensity={Math.PI * 2} /> */}
+        <ambientLight intensity={3} />
         <group ref={group} {...props} dispose={null}>
           <mesh
             name='GSP'
@@ -88,6 +90,12 @@ export default function ViewModel(props) {
 
         <OrbitControls target={[0, 1, 0]} />
       </Canvas>
+      <div className='w-full flex justify-end'>
+        <Link to='/' className='flex flex-col items-center justify-center py-2 px-3 bg-red-600 rounded-lg text-white'>
+          <FaArrowRight />
+          <span className='text-xs font-semibold mt-1'>END</span>
+        </Link>
+      </div>
     </div>
   )
 }

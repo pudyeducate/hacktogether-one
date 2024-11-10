@@ -1,11 +1,13 @@
-import { tangan } from '@assets'
+import { city, tangan } from '@assets'
 import React, { useState } from 'react'
 import { FaLink, FaPlay, FaSearch } from 'react-icons/fa'
-import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const [inputValue, setInputValue] = useState('') // State to store input value
-  const navigate = useNavigate()
+  const [isModalOpen, setModalOpen] = useState(false)
+
+  const openModal = () => setModalOpen(true)
+  const closeModal = () => setModalOpen(false)
   function generateRandomString(length) {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
     let result = ''
@@ -15,10 +17,13 @@ const Login = () => {
     return result
   }
   function handleClick() {
+    openModal()
+  }
+
+  const redirect = (model: string) => {
     const firstVar = generateRandomString(6)
     const secVar = generateRandomString(6)
-
-    const url = `http://192.168.40.92:5173/viewmodel?rtName=${firstVar}#rtPwd=${secVar}`
+    const url = `${import.meta.env['VITE_BASE_URL']}viewmodel?model=${model}&rtName=${firstVar}#rtPwd=${secVar}`
 
     window.location.href = url
   }
@@ -34,7 +39,7 @@ const Login = () => {
   }
   return (
     <>
-      <header className='w-full flex justify-between items-center px-8 py-4 absolute px-20'>
+      <header className='w-full flex justify-between items-center  py-4 absolute px-20'>
         <div className='text-4xl font-bold text-green-300'>DimenSync</div>
         <div className='flex space-x-4'></div>
       </header>
@@ -71,7 +76,29 @@ const Login = () => {
           </div>
         </div>
       </main>
-
+      {isModalOpen && (
+        <div className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-40'>
+          <div className='bg-white p-6 rounded-lg max-w-2xl w-full '>
+            <h2 className='text-2xl font-semibold mb-4'>Choose Models</h2>
+            <button
+              onClick={() => redirect('city')}
+              className='flex items-center p-4 bg-gray-100 rounded-lg hover:shadow-lg hover:cursor-pointer transition-all duration-75'
+            >
+              <img src={city} alt='City Model' className='w-32 h-32 mr-4' />
+              <div className=''>
+                <h1 className='text-lg text-left font-medium'>City Models</h1>
+                <p className='text-md text-justify'>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, neque. Eos dolore cupiditate deleniti suscipit repudiandae
+                  eveniet sunt voluptates nostrum?
+                </p>
+              </div>
+            </button>
+            <button onClick={closeModal} className='mt-6 w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition'>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
       <div className='mt-12 w-2/5  absolute right-0 bottom-0'>
         <img src={tangan} alt='3D Hand and Shapes' className='w-full h-auto' />
       </div>

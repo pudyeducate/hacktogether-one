@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path='/login' element={<Login />} />
+        <Route path='/' element={<Login />} />
         <Route path='/viewmodel' element={<ViewModel />} />
         {/* <Route path='/viewmodel' element={<ViewModel />} /> */}
       </Routes>
