@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         password: 'hszWXh',
       }}
     >
-      <ViewModel />
+      {/* <ViewModel /> */}
     </ReactTogether>
   </React.StrictMode>
 )

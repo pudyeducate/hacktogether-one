@@ -1,11 +1,19 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-
-import App from '@/App'
+import App from '@App'
+import ViewModel from '@pages/ViewModel'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 import { ReactTogether } from 'react-together'
-
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <ReactTogether
+      sessionParams={{
+        appId: import.meta.env['VITE_APP_ID'],
+        apiKey: import.meta.env['VITE_API_KEY'],
+        name: 'T6cU5V',
+        password: 'hszWXh',
+      }}
+    >
+      <App />
+    </ReactTogether>
+  </React.StrictMode>
 )
