@@ -9,8 +9,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       sessionParams={{
         appId: import.meta.env['VITE_APP_ID'],
         apiKey: import.meta.env['VITE_API_KEY'],
-        name: 'T6cU5V',
-        password: 'hszWXh',
       }}
     >
       <App />

@@ -1,1 +1,0 @@
-import{c as t,j as e,R as a,x as o}from"./client-woXhP7hm.js";t.createRoot(document.getElementById("root")).render(e.jsx(a.StrictMode,{children:e.jsx(o,{sessionParams:{appId:"dev.reacttogether.hacktogether-one",apiKey:"2CtgA4djN0pYVxGgIExxZRXYqODdjpLx6ePMaIgFVx",name:"T6cU5V",password:"hszWXh"}})}));

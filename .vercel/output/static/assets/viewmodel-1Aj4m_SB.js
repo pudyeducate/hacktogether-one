@@ -1,0 +1,1 @@
+import{d as t,j as e,e as s,x as a,V as o}from"./ViewModel-B89Xqjal.js";t.createRoot(document.getElementById("root")).render(e.jsx(s.StrictMode,{children:e.jsx(a,{sessionParams:{appId:"dev.reacttogether.hacktogether-one",apiKey:"2CtgA4djN0pYVxGgIExxZRXYqODdjpLx6ePMaIgFVx",name:"T6cU5V",password:"hszWXh"},children:e.jsx(o,{})})}));
