@@ -1,6 +1,7 @@
 import { city, tangan } from '@assets'
 import React, { useState } from 'react'
 import { FaLink, FaPlay, FaSearch } from 'react-icons/fa'
+import Swal from 'sweetalert2'
 
 const Login = () => {
   const [inputValue, setInputValue] = useState('') // State to store input value
@@ -27,12 +28,18 @@ const Login = () => {
   }
 
   const validateInput = () => {
-    const pattern = /\?rtName=[a-zA-Z0-9]+#rtPwd=[a-zA-Z0-9]+/ // Regex pattern for ?rtName=***#rtPwd=****
+    const pattern = /\/\?model=[a-zA-Z0-9]+&rtName=[a-zA-Z0-9]+#rtPwd=[a-zA-Z0-9]+/
     if (pattern.test(inputValue)) {
       window.location.href = inputValue
-      // Add further actions, such as redirecting or submitting
     } else {
-      alert('Input is not valid!')
+      Swal.fire({
+        title: 'Invalid URL',
+        text: 'Please enter a valid URL',
+        icon: 'error',
+        showCancelButton: true,
+        showConfirmButton: false,
+        cancelButtonText: 'Close',
+      })
     }
   }
   return (
