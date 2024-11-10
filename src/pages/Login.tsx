@@ -55,7 +55,7 @@ const Login = () => {
             <br />
             Welcome to <span className='text-green-300'>DimenSync</span>
           </h1>
-          <p className='text-lg text-gray-400'>Discovering new way to present your 3D Asset</p>
+          <p className='text-xl text-gray-400'>Dive into 3D Details, in Sync with Others</p>
 
           <div className='flex space-x-4'>
             <button
@@ -93,8 +93,9 @@ const Login = () => {
               <div className=''>
                 <h1 className='text-lg text-left font-medium'>City Models</h1>
                 <p className='text-md text-justify'>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos, neque. Eos dolore cupiditate deleniti suscipit repudiandae
-                  eveniet sunt voluptates nostrum?
+                  A detailed 3D representation of an urban landscape, showcasing buildings, streets, and key landmarks of the city. This
+                  model provides an immersive view of the city's layout and architectural features, perfect for visualizing city planning,
+                  development, or navigation.
                 </p>
               </div>
             </button>
