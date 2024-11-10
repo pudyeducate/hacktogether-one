@@ -11,7 +11,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path='/' element={<ViewModel />} />
-        {/* <Route path='/viewmodel' element={<ViewModel />} /> */}
+        <Route path='/login' element={<Login />} />
       </Routes>
     </Router>
   )
