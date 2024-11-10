@@ -4,7 +4,18 @@ import ViteYaml from '@modyfi/vite-plugin-yaml'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import vercel from 'vite-plugin-vercel'
 
+const ClientSideRouting = {
+  name: 'dynamic-router',
+  configureServer(server) {
+    server.middlewares.use((req, res, next) => {
+      if (req.url.search(/^\/@\d+/) !== -1) {
+        req.url = '/'
+      }
+      next()
+    })
+  },
+}
 export default defineConfig({
-  plugins: [ViteYaml(), react(), tsconfigPaths(), vercel()],
+  plugins: [ViteYaml(), react(), tsconfigPaths(), vercel(), ClientSideRouting],
   assetsInclude: ['**/*.glb'],
 })
