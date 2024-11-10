@@ -15,6 +15,12 @@ export default function ViewModel(props) {
 
   useEffect(() => {
     const currentUrl = window.location.href
+    const pattern = /\/\?model=[a-zA-Z0-9]+&rtName=[a-zA-Z0-9]+#rtPwd=[a-zA-Z0-9]+/
+    // Regex pattern for ?rtName=***#rtPwd=****
+    console.log(pattern.test(currentUrl))
+    if (!pattern.test(currentUrl)) {
+      window.location.href = '/login'
+    }
 
     Swal.fire({
       title: 'Current URL',
@@ -597,7 +603,7 @@ export default function ViewModel(props) {
         <OrbitControls target={[0, 1, 0]} />
       </Canvas>
       <div className='w-full flex justify-end'>
-        <Link to='/' className='flex flex-col items-center justify-center py-2 px-3 bg-red-600 rounded-lg text-white'>
+        <Link to='/login' className='flex flex-col items-center justify-center py-2 px-3 bg-red-600 rounded-lg text-white'>
           <FaArrowRight />
           <span className='text-xs font-semibold mt-1'>END</span>
         </Link>

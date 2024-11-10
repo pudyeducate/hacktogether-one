@@ -21,7 +21,7 @@ const Login = () => {
   }
 
   const redirect = (model: string) => {
-    const url = `/viewmodel?model=${model}&rtName=T6cU5V#rtPwd=hszWXh`
+    const url = `/?model=${model}&rtName=T6cU5V#rtPwd=hszWXh`
 
     window.location.href = url
   }
