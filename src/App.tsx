@@ -12,7 +12,6 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/viewmodel' element={<ViewModel />} />
-        {/* <Route path='/viewmodel' element={<ViewModel />} /> */}
       </Routes>
     </Router>
   )
